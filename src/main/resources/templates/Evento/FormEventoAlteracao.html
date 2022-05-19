@@ -21,6 +21,10 @@
 	<form method="post" action="/cadastrarEvento">
 		<div th:each="evento: ${eventos}">
 			<div class="row">
+        		
+        		<div class="input-field col s3">
+					Cod: <input type="text" th:value="${evento.codigo}" name="codigo"> 
+				</div>
         		<div class="input-field col s3">
 					Nome: <input type="text" th:value="${evento.nome}" name="nome"> 
 				</div>

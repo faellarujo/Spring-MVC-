@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,11 +26,28 @@ public class EventoController {
 
 	@PostMapping("/cadastrarEvento")
 	public String Form(Evento evento) {
-
 		eventoRepository.save(evento);
-
 		return "redirect:/cadastrarEvento";
 	}
+	
+	
+	
+	
+	
+	
+
+  	@RequestMapping("/alterarEvento")
+	public String alterar(Long codigo) {
+		Optional<Evento> ev = eventoRepository.findById(codigo);
+		Evento evento = ev.get();	
+		evento.setNome(ev.get().getNome());
+		evento.setData(ev.get().getData());
+		evento.setHorario(ev.get().getHorario());
+		evento.setLocal(ev.get().getLocal());		
+		eventoRepository.save(evento);
+		return "redirect:/eventos";
+	}
+	
 
 	@GetMapping("/eventos")
 	public ModelAndView FormListaEventos() {
@@ -57,10 +73,11 @@ public class EventoController {
 		return "redirect:/eventos";
 		}
 	
+	
 	@RequestMapping("/alterar")
 	public ModelAndView alterarEvento(Long codigo) {
 		Optional<Evento> ev = eventoRepository.findById(codigo);
-		ModelAndView modelAndView = new ModelAndView("Evento/FormEventoAlteracao");
+		ModelAndView modelAndView = new ModelAndView("Evento/FormEventoAlteracao");		
 		modelAndView.addObject("eventos", ev.get());
 		return modelAndView;
 		}
