@@ -28,25 +28,7 @@ public class EventoController {
 	public String Form(Evento evento) {
 		eventoRepository.save(evento);
 		return "redirect:/cadastrarEvento";
-	}
-	
-	
-	
-	
-	
-	
-
-  	@RequestMapping("/alterarEvento")
-	public String alterar(Long codigo) {
-		Optional<Evento> ev = eventoRepository.findById(codigo);
-		Evento evento = ev.get();	
-		evento.setNome(ev.get().getNome());
-		evento.setData(ev.get().getData());
-		evento.setHorario(ev.get().getHorario());
-		evento.setLocal(ev.get().getLocal());		
-		eventoRepository.save(evento);
-		return "redirect:/eventos";
-	}
+	}  
 	
 
 	@GetMapping("/eventos")
