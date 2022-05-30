@@ -2,7 +2,9 @@ package com.MVC.testes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.MVC.model.Evento;
 import com.MVC.repository.EventoRepository;
+
 
 public class AppTeste {
 
@@ -11,19 +13,26 @@ public class AppTeste {
 	public static EventoRepository eventoRepository;
 	
 	
-	public static void main(String[] args) {
-		try {
-			eventoRepository.findAll().toString();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
+	public static void main(String[] args) {		
 		
+		Evento evento = new Evento();
+		salva(evento);
+		System.out.println("Salva com sucesso");
 	}
 	
-	public void imprime() {
-		eventoRepository.findAll();
+	
+	public static void salva(Evento evento) {
+		
+		evento.setData("data");
+		evento.setHorario("horario");
+		evento.setLocal("local");
+		evento.setNome("nome");		
+		eventoRepository.save(evento);
 	}
+	
 	
 
 }
+
+

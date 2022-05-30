@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.MVC.model.Evento;
 import com.MVC.repository.EventoRepository;
+import com.MVC.utility.SendEmail;
 
 @Controller
 public class EventoController {
@@ -27,6 +28,8 @@ public class EventoController {
 	@PostMapping("/cadastrarEvento")
 	public String Form(Evento evento) {
 		eventoRepository.save(evento);
+		SendEmail sendEmail = new SendEmail();
+		SendEmail.enviandoMesansagem(sendEmail.getRemetente(), sendEmail.getToUser(), "Evento Cadastrado", evento.getNome());		
 		return "redirect:/cadastrarEvento";
 	}  
 	
@@ -51,6 +54,9 @@ public class EventoController {
 	@RequestMapping("/deletar")
 	public String deletaEvento(Long codigo) {
 		Optional<Evento> ev = eventoRepository.findById(codigo);
+		String nomeEvento = ev.get().getNome();
+		SendEmail sendEmail = new SendEmail();
+		SendEmail.enviandoMesansagem(sendEmail.getRemetente(), sendEmail.getToUser(), "Evento Deletado", nomeEvento);
 		eventoRepository.deleteById(ev.get().getCodigo());			
 		return "redirect:/eventos";
 		}
