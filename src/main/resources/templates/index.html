@@ -5,32 +5,52 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-<body>	
-<div class="container">	
-	<h1>Login</h1>
-	<form method="post" action="/user">
-		<div>
-			<div class="row">
-        		<div class="input-field col s3">
-					Usuario: <input type="text" value="" name="user"> 
+<body>
+	<div class="container">
+		<h1>Login</h1>
+		<form method="post" action="/user">
+			<div>
+				<div class="row">
+					<div class="input-field col s3">
+						Usuario: <input type="text" value="" name="user">
+					</div>
+					<div class="input-field col s3">
+						Senha: <input type="password" value="" name="password">
+					</div>
 				</div>
-				<div class="input-field col s3">
-					Senha: <input type="password" value="" name="password"> 			 						
-				</div>			 		 		
 			</div>
-		</div>
-		<button class="waves-effect waves-light btn"  type="submit" value="submit">Login</button>
-		<p><span th:text="${error}"></span></p> 		
-	</form>	
-	<!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-</div>
+			<div>
+				<table>
+					<tr>
+						<td>
+							<div>
+								<button class="waves-effect waves-light btn" type="submit"
+									value="submit">Login</button>
+							</div>
+						</td>
+						<td>
+							<div>
+								<h3>
+									<a href="/cadastrarUser" class="waves-effect waves-light btn">Cadastrar Usuarios</a>
+								</h3>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+		</form>
+		<!--JavaScript at end of body for optimized loading-->
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+	</div>
 </body>
 </html>
