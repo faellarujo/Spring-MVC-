@@ -10,7 +10,7 @@ public class LoginController {
 	
 		@GetMapping("/login")
 		public String logintela() {
-			return "Evento/login";
+			return "/login";
 			
 		}
 		

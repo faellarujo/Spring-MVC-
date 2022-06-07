@@ -17,15 +17,18 @@ public class UserController {
 
 	@RequestMapping("/user")
 	public String form(Model model, @ModelAttribute("User") User user) {
-		User userUtils = userRepository.findByUser(user.getUser());
-		String userName = new String(userUtils.getUser());
-		String userPassword = new String(userUtils.getPassword());
 
-		if ((userName.equals(user.getUser()) && (userPassword.equals(user.getPassword())))) {
-			return "redirect:/eventos";
-		} else {
-			model.addAttribute("error", "Usuario ou senha invalido!!!");
-			return "Evento/login";
+		User userUtils = userRepository.findByUser(user.getUser());
+
+		if (userUtils != null) {
+			String userName = new String(userUtils.getUser());
+			String userPassword = new String(userUtils.getPassword());
+
+			if ((userName.equals(user.getUser()) && (userPassword.equals(user.getPassword())))) {
+				return "redirect:/listaEventos";
+			} 
 		}
-	}
+		model.addAttribute("error", "Usuario ou senha invalido!!!");	
+		return "redirect:/";
+		}
 }
