@@ -36,8 +36,9 @@ public class UserController {
 	
 	
 	
-	@GetMapping("/cadastrarUser")
-	public String Form() {		
+	@RequestMapping("/cadastrarUser")
+	public String cadastrar(Model model, @ModelAttribute("User") User user) {		
+		userRepository.save(user);
 		return "/cadastrarUser";
-	}
+	}	
 }
