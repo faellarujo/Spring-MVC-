@@ -29,8 +29,7 @@ public class UserDao {
 	
 	public void Salvar(User user) {
 		valida(new SenhaValidador(), user.getPassword());
-		valida(new UserValidador(),  user.getUser());
-		//userRepository.save(user);
+		valida(new UserValidador(),  user.getUser());		
 	}
 	
 	
