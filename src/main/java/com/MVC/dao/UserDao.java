@@ -1,5 +1,7 @@
 package com.MVC.dao;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.MVC.model.User;
@@ -10,12 +12,10 @@ import com.MVC.utility.Validador;
 import com.MVC.utility.ValidadorExpection;
 
 public class UserDao {
-	
-	
+
 	@Autowired
 	public UserRepository userRepository;
-	
-	
+
 	public <T> void valida(Validador<T> validador, T user) {
 		try {
 			validador.valida(user);
@@ -25,12 +25,37 @@ public class UserDao {
 			throw new RuntimeException(msg);
 		}
 	}
-	
-	
+
 	public void Salvar(User user) {
 		valida(new SenhaValidador(), user.getPassword());
-		valida(new UserValidador(),  user.getUser());		
+		valida(new UserValidador(), user.getUser());
+	}
+
+	public void login(User user) {
+		try {
+
+			if (Objects.isNull(user)) {
+				System.out.println("Objeto esta nullo");
+			} else {
+				user.setLogin(true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
-	
- }	
+	public void logout(User user) {
+		try {
+
+			if (Objects.isNull(user)) {
+				System.out.println("Objeto esta nullo");
+			} else {
+				user.setLogin(true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+}

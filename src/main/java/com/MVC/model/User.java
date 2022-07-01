@@ -23,17 +23,18 @@ public class User {
 	
 	String user;
 	String password;
-	
-	
+	boolean login = false;	
 	
 	public User() {
 		
-	}
-	
-	public User(String user, String password) {
+	}	
+
+	public User(Long idUser, String user, String password, boolean login) {
 		super();
+		this.idUser = idUser;
 		this.user = user;
 		this.password = password;
+		this.login = login;
 	}
 	
 	

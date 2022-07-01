@@ -38,7 +38,8 @@ public class UserController {
 	@RequestMapping("/userSave")
 	public String cadastrar(Model model, @ModelAttribute("User") User user) {		
 		UserDao userDao = new UserDao();
-		userDao.Salvar(user);		
+		userDao.Salvar(user);
+		userDao.login(user);
 		userRepository.save(user);
 		return "/cadastrarUser";
 	}
