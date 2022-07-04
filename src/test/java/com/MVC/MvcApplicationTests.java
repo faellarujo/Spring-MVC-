@@ -17,14 +17,9 @@ class MvcApplicationTests {
 	@Autowired
 	UserRepository userRepository;
 	
-	@Test	
-	void SaveUser() {
-		User user = new User("teste", "123");
-		user.setUser("Raphael");
-		user.setPassword("12345");
-		userRepository.save(user);
+	
 		
-	}
+	
 	
 	@Test
 	@Disabled
