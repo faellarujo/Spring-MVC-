@@ -8,12 +8,12 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String imprime() {
-		return "index";
+		return "redirect:/listaEventos";
 		}
 	
 	@GetMapping("/login")
 	public String imprime1() {
-		return "login";
+		return "/login";
 		}
 	
 	
